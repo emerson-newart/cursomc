@@ -2,6 +2,9 @@ package com.nelioalves.cursomc.domain;
 
 import java.io.Serializable;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.util.ArrayList;
 
 import jakarta.persistence.Entity;
@@ -20,6 +23,7 @@ public class Categoria implements Serializable{
     private long id;
     private String nome;
 
+    @JsonManagedReference // Busca as referencias no caso os produtos de cada categoria
     @ManyToMany(mappedBy = "categorias")
     private List<Produto> produtos = new ArrayList<>();
 

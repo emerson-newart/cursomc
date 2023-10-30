@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,6 +25,7 @@ public class Produto implements Serializable{
     private String nome;
     private Double preco;
 
+    @JsonBackReference // Ja que as categorias estão listando as suas referencias aqui não será retornado
     // Relacionamento muitos para muitos entre produtos e categorias
     @ManyToMany
     @JoinTable(
@@ -44,7 +47,7 @@ public class Produto implements Serializable{
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
