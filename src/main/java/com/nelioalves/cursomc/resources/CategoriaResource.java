@@ -1,7 +1,9 @@
 package com.nelioalves.cursomc.resources;
 
+import java.util.List;
 import java.util.Optional;
 
+//import org.hibernate.mapping.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,4 +28,12 @@ public class CategoriaResource{
         Optional<Categoria> obj = service.find(id);
         return ResponseEntity.ok().body(obj);
     }
+
+    @RequestMapping(value="/",method = RequestMethod.GET)
+    public ResponseEntity<?> listarTodos(){
+        List<Categoria> obj = service.buscarTodos();
+        return ResponseEntity.ok().body(obj);
+    }
+
+
 }
